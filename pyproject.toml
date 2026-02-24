@@ -1,0 +1,17 @@
+[project]
+name = "ffmpeg-stream"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.13.0",
+    "fastapi-mail>=1.5.7",
+    "fastapi[standard]>=0.119.0",
+    "gunicorn>=23.0.0",
+    "numpy>=2.3.3",
+    "pydantic>=2.12.3",
+    "pymongo>=4.15.4",
+    "python-dotenv>=1.1.1",
+    "ultralytics>=8.3.213",
+]
