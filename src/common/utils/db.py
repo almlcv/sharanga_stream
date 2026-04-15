@@ -7,7 +7,7 @@ MONGO_URI = os.getenv(
     ''
 )
 
-DB_NAME = "RabsProject"
+DB_NAME = "Sharanga_Production"
 
 # Initialize MongoDB client
 try:
