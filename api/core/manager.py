@@ -59,7 +59,7 @@ def start_model_processes(model_name: str, model_id: int, visual_streaming: bool
 
     # Create queues using spawn context
     detection_queue = ctx.Queue(maxsize=QUEUE_SIZE)
-    display_queue = ctx.Queue(maxsize=QUEUE_SIZE)
+    display_queue = ctx.Queue(maxsize=QUEUE_SIZE * 2)
     shutdown_event = ctx.Event()
 
     # Get model config

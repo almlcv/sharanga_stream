@@ -2,3 +2,4 @@
 .env
 detected_frames/
 .vscode/
+__pycache__/

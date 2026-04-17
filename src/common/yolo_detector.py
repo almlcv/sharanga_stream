@@ -129,7 +129,7 @@ def yolo_detector_process(model_id: int, model_config: ModelConfig, detection_qu
                 # Update display queue (drop old frames if full)
                 if display_queue is not None:
                     try:
-                        while display_queue.qsize() > 3:
+                        while display_queue.qsize() > 5:
                             try:
                                 display_queue.get_nowait()
                             except:

@@ -532,6 +532,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pymongo" },
     { name = "python-dotenv" },
+    { name = "turbojpeg" },
     { name = "ultralytics" },
 ]
 
@@ -545,6 +546,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pymongo", specifier = ">=4.15.4" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
+    { name = "turbojpeg", specifier = ">=0.0.2" },
     { name = "ultralytics", specifier = ">=8.3.213" },
 ]
 
@@ -2183,6 +2185,18 @@ dependencies = [
 wheels = [
     { url = "https://files.pythonhosted.org/packages/30/7b/0a685684ed5322d2af0bddefed7906674f67974aa88b0fae6e82e3b766f6/triton-3.4.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:00be2964616f4c619193cb0d1b29a99bd4b001d7dc333816073f92cf2a8ccdeb", size = 155569223, upload-time = "2025-07-30T19:58:44.017Z" },
     { url = "https://files.pythonhosted.org/packages/20/63/8cb444ad5cdb25d999b7d647abac25af0ee37d292afc009940c05b82dda0/triton-3.4.0-cp313-cp313t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7936b18a3499ed62059414d7df563e6c163c5e16c3773678a3ee3d417865035d", size = 155659780, upload-time = "2025-07-30T19:58:51.171Z" },
+]
+
+[[package]]
+name = "turbojpeg"
+version = "0.0.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/22/eedac26fbec8a556343d93a3709cf4e66e8a63d2bf8bc73c0ee9dddd8b61/turbojpeg-0.0.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:98a9faac77c0f563786c63c38d816df26ad82132bb313451e95ff26de24b8ee7", size = 529578, upload-time = "2025-05-12T18:10:30.188Z" },
+    { url = "https://files.pythonhosted.org/packages/93/5c/defa901b3dc516b68bdbc82058b9f92db427ead1c33bdb45b8527eb41eee/turbojpeg-0.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:807b40c5fb62084d6a5e1e94531c587d1934519173fb3fa7956101598327fff6", size = 567973, upload-time = "2025-05-12T18:10:31.992Z" },
+    { url = "https://files.pythonhosted.org/packages/14/38/d4edf7543203c44b9a18a52da7b7b5fc087dbf4d16917086d8b0b087121b/turbojpeg-0.0.2-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:da2e24da22e6481c3cd8704b8fe4a80c29fc46a528bba10a6ddd11b531d02fc8", size = 1538204, upload-time = "2025-05-12T18:10:33.48Z" },
+    { url = "https://files.pythonhosted.org/packages/13/3e/1a7f0907e3d60de125972975d5c89a22c5ea1e54f0979be35155906fd780/turbojpeg-0.0.2-cp313-cp313-win32.whl", hash = "sha256:cbc613af0bf22dae2b257710179e2a84f77e7b0e3851e7bfbe8325e2d5bdf16f", size = 379270, upload-time = "2025-05-12T18:10:35.078Z" },
+    { url = "https://files.pythonhosted.org/packages/2b/e0/41c96c3305d4a24561e7aefd348f25629235a49bf1e9c50a720c64b613a2/turbojpeg-0.0.2-cp313-cp313-win_amd64.whl", hash = "sha256:7546bbd379c3e2dfd469c0b81837d2e1ca2d15b8a37eb0d397a19a486b2e114d", size = 441112, upload-time = "2025-05-12T18:10:36.494Z" },
 ]
 
 [[package]]

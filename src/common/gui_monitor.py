@@ -8,6 +8,23 @@ from fastapi.responses import StreamingResponse
 from api.core.manager import active_processes  # Remove enable_visual_streaming import
 from src.config.config import STREAM_WIDTH, STREAM_HEIGHT
 
+# TurboJPEG: 2-3x faster JPEG encoding than cv2.imencode
+try:
+    from turbojpeg import TurboJPEG
+    _tj = TurboJPEG('/home/aiserver/miniconda3/pkgs/libjpeg-turbo-2.0.0-h9bf148f_0/lib/libturbojpeg.so')
+    print('[✓] TurboJPEG loaded — fast JPEG encoding enabled')
+except Exception as e:
+    _tj = None
+    print(f'[!] TurboJPEG not available, using OpenCV fallback: {e}')
+
+
+def encode_jpeg(frame: np.ndarray, quality: int = 65) -> bytes:
+    """Encode frame to JPEG using TurboJPEG (fast) or OpenCV (fallback)."""
+    if _tj is not None:
+        return _tj.encode(frame, quality=quality)
+    _, buf = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, quality])
+    return buf.tobytes()
+
 
 async def gui_stream(model_name: str):
     """MJPEG GUI stream - displays annotated frames from detector.
@@ -88,7 +105,7 @@ async def gui_stream(model_name: str):
                 
                 current_time = time.time()
                 
-                if frames_updated or (current_time - last_grid_update >= 0.033):
+                if frames_updated or (current_time - last_grid_update >= 0.066):
                     canvas = np.zeros((grid_height, grid_width, 3), dtype=np.uint8)
                     stream_indices = sorted(stream_frames.keys())
                     
@@ -104,14 +121,14 @@ async def gui_stream(model_name: str):
                         y1, y2 = row * STREAM_HEIGHT, (row + 1) * STREAM_HEIGHT
                         x1, x2 = col * STREAM_WIDTH, (col + 1) * STREAM_WIDTH
                         
-                        if current_time - last_frame_time.get(actual_idx, 0) < 5:
+                        if current_time - last_frame_time.get(actual_idx, 0) < 10:
                             frame = stream_frames[actual_idx]
                             canvas[y1:y2, x1:x2] = frame
                     
-                    _, jpeg = cv2.imencode(".jpg", canvas, [cv2.IMWRITE_JPEG_QUALITY, 85])
+                    jpeg_bytes = encode_jpeg(canvas, quality=65)
                     yield (
                         b"--frame\r\n"
-                        b"Content-Type: image/jpeg\r\n\r\n" + jpeg.tobytes() + b"\r\n"
+                        b"Content-Type: image/jpeg\r\n\r\n" + jpeg_bytes + b"\r\n"
                     )
                     
                     last_grid_update = current_time
